@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perusahaan Anime Movie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        /* Color palette inspired by anime movie vibrant tones */
+        :root {
+            --primary-color: #ef4b7f; /* pink/red */
+            --secondary-color: #5f72ff; /* blue */
+            --accent-color: #f5a962; /* light orange */
+            --background-color: #1a1a2e; /* dark purple/navy */
+            --text-color-light: #f0f0f0;
+            --text-color-dark: #333;
+            --shadow-color: rgba(0,0,0,0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 6px var(--shadow-color);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header nav .logo {
+            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--background-color);
+            text-shadow: 1px 1px 2px #0007;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--background-color);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        header nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #5f72ffaa, #ef4b7faa), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') center center/cover no-repeat;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            background: rgba(26, 26, 46, 0.75);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 8px #0009;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-color-light);
+            text-shadow: 1px 1px 5px #0009;
+        }
+
+        .hero button {
+            background: var(--primary-color);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            color: var(--background-color);
+            box-shadow: 0 4px 15px var(--primary-color);
+            transition: background 0.3s ease;
+        }
+
+        .hero button:hover {
+            background: var(--accent-color);
+            box-shadow: 0 6px 20px var(--accent-color);
+        }
+
+        /* Main sections */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            color: var(--text-color-light);
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-align: center;
+            text-shadow: 1px 1px 5px #0007;
+        }
+
+        /* Tentang Kami Section */
+        .about {
+            background: #2c2c54;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* Layanan Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #3c3c7a;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px var(--accent-color);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 5px #0008;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: var(--text-color-light);
+        }
+
+        /* Tim Section */
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .team-member {
+            background: #3c3c7a;
+            border-radius: 15px;
+            max-width: 280px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+            padding: 1rem;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px var(--accent-color);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px var(--primary-color);
+        }
+
+        .team-member h4 {
+            margin: 0.5rem 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .team-member p {
+            font-style: italic;
+            color: var(--text-color-light);
+            font-size: 0.9rem;
+        }
+
+        /* Kontak Section */
+        .contact {
+            background: #2c2c54;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .contact label {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            resize: vertical;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--primary-color);
+            background: #fff;
+            color: #000;
+        }
+
+        .contact button {
+            background: var(--primary-color);
+            border: none;
+            padding: 1rem;
+            color: var(--background-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px var(--primary-color);
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: var(--accent-color);
+            box-shadow: 0 6px 20px var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #111122;
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 0.9rem;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            header nav ul {
+                gap: 1rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AnimeCorp</div>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#tim">Tim</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="beranda" class="hero" role="banner" aria-label="Beranda AnimeCorp">
+        <div class="hero-content">
+            <h1>Selamat Datang di AnimeCorp</h1>
+            <p>Perusahaan kreatif yang menghidupkan dunia anime dengan sentuhan magis dan teknologi canggih.</p>
+            <button onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Hubungi Kami</button>
+        </div>
+    </section>
+
+    <main>
+        <section id="tentang" class="about" aria-labelledby="judul-tentang">
+            <h2 id="judul-tentang">Tentang Kami</h2>
+            <p>AnimeCorp adalah perusahaan yang berdedikasi pada pengembangan konten dan teknologi bertemakan anime movie. Kami menggabungkan kreativitas dan teknologi untuk menciptakan pengalaman visual yang memukau dan cerita yang menginspirasi. Tim kami terdiri dari profesional yang bersemangat membawa dunia anime ke tingkat berikutnya di Indonesia dan global.</p>
+        </section>
+
+        <section id="layanan" aria-labelledby="judul-layanan">
+            <h2 id="judul-layanan">Layanan Kami</h2>
+            <div class="services">
+                <article class="service-card" tabindex="0" role="article" aria-label="Produksi Animasi">
+                    <h3>Produksi Animasi</h3>
+                    <p>Menghasilkan animasi berkualitas tinggi dengan teknologi terbaru dan cerita mendalam untuk berbagai platform.</p>
+                </article>
+
+                <article class="service-card" tabindex="0" role="article" aria-label="Desain Karakter">
+                    <h3>Desain Karakter</h3>
+                    <p>Menciptakan karakter anime unik yang berkesan dan dapat memperkuat brand atau cerita Anda.</p>
+                </article>
+
+                <article class="service-card" tabindex="0" role="article" aria-label="Pengembangan Game Anime">
+                    <h3>Pengembangan Game Anime</h3>
+                    <p>Mengembangkan game bertemakan anime dengan gameplay seru dan visual yang memikat.</p>
+                </article>
+
+                <article class="service-card" tabindex="0" role="article" aria-label="Konsultasi Kreatif">
+                    <h3>Konsultasi Kreatif</h3>
+                    <p>Memberikan konsultasi untuk ide dan konsep media bertemakan anime untuk bisnis dan hiburan.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="tim" aria-labelledby="judul-tim">
+            <h2 id="judul-tim">Tim Kami</h2>
+            <div class="team">
+                <article class="team-member" tabindex="0" role="article" aria-label="Profil Aiko, CEO">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Foto Aiko, CEO AnimeCorp" loading="lazy" />
+                    <h4>Aiko Tanaka</h4>
+                    <p>CEO & Visioner Kreatif</p>
+                </article>
+
+                <article class="team-member" tabindex="0" role="article" aria-label="Profil Rian, Lead Animator">
+                    <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Foto Rian, Lead Animator AnimeCorp" loading="lazy" />
+                    <h4>Rian Pratama</h4>
+                    <p>Lead Animator</p>
+                </article>
+
+                <article class="team-member" tabindex="0" role="article" aria-label="Profil Sari, Desainer Karakter">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto Sari, Desainer Karakter AnimeCorp" loading="lazy" />
+                    <h4>Sari Widjaja</h4>
+                    <p>Desainer Karakter</p>
+                </article>
+
+                <article class="team-member" tabindex="0" role="article" aria-label="Profil Budi, Pengembang Game">
+                    <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Foto Budi, Pengembang Game AnimeCorp" loading="lazy" />
+                    <h4>Budi Santoso</h4>
+                    <p>Pengembang Game</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="kontak" class="contact" aria-labelledby="judul-kontak">
+            <h2 id="judul-kontak">Kontak Kami</h2>
+            <form onsubmit="alert('Terima kasih telah menghubungi kami! Pesan Anda akan segera kami tindak lanjuti.'); return false;" aria-label="Formulir kontak AnimeCorp">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" required aria-required="true" placeholder="Masukkan nama lengkap Anda" />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required aria-required="true" placeholder="email@domain.com" />
+
+                <label for="pesan">Pesan</label>
+                <textarea id="pesan" name="pesan" rows="4" required aria-required="true" placeholder="Tulis pesan atau pertanyaan Anda di sini"></textarea>
+
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 AnimeCorp. Semua hak cipta dilindungi.
+    </footer>
+</body>
+</html>
+
